@@ -1,27 +1,14 @@
-[project]
-name = "elcad-qa"
-version = "0.1.0"
-requires-python = ">=3.10"
-dependencies = [
-  "ezdxf>=1.2.0",
-  "networkx>=3.2",
-  "pandas>=2.0",
-  "numpy>=1.25",
-  "pillow>=10.0",
-  "shapely>=2.0",
-  "click>=8.1",
-  "jinja2>=3.1",
-  # Optional extras:
-  "pytesseract>=0.3.10 ; platform_system!='Windows'",  # or install Tesseract separately
-  "easyocr>=1.7.1",
-  "opencv-python>=4.9.0",
-  "ultralytics>=8.2.0",          # YOLOv8
-  "python-dotenv>=1.0.1",        # if you want to store API keys for NLP
-  "openpyxl>=3.1"                # if you want Excel output
-]
-
-[project.optional-dependencies]
-nlp = ["openai>=1.30.0"]         # or azure-ai-openai if you use Azure OpenAI
-
-[tool.setuptools.packages.find]
-where = ["src"]
+ezdxf>=1.2.0
+networkx>=3.2
+pandas>=2.0
+numpy>=1.25
+pillow>=10.0
+shapely>=2.0
+click>=8.1
+jinja2>=3.1
+pytesseract>=0.3.10
+easyocr>=1.7.1
+opencv-python>=4.9.0
+ultralytics>=8.2.0
+python-dotenv>=1.0.1
+openpyxl>=3.1
