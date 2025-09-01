@@ -1,0 +1,45 @@
+input:
+  glob: "data/samples/**/*.dxf"   # or .dwg if ezdxf supports your DWG flavor via ODA/Teigha exports
+  sheet_layer_regex: "SHEET|TITLE|TB"
+  wire_layer_regex: "WIRE|NET|SIG|ELECTRICAL"
+  text_layer_regex: "TEXT|ANNOT|LABEL"
+
+vision:
+  enabled: true
+  ocr:
+    engine: "easyocr"            # easyocr|tesseract
+    languages: ["en"]
+  yolo:
+    enabled: true
+    weights: "models/yolo/best.pt"  # your trained symbols file
+    conf: 0.25
+    iou: 0.45
+    classes:
+      - fuse
+      - relay
+      - connector
+      - gnd
+      - power
+      - resistor
+      - diode
+
+graph:
+  merge_distance_px: 12          # snap detection/labels to nearest geometry
+  normalize_units: "mm"          # or "px" (set your converter)
+
+qa:
+  rules:
+    - open_nets
+    - orphan_terminals
+    - duplicate_tags
+    - label_without_net
+    - net_without_label
+    - rating_mismatch_bom
+    - sheet_xref_missing
+
+reporting:
+  formats: ["csv","json","html"]
+  out_dir: "out"
+
+bom:
+  path: "data/bom.csv"           # optional; columns: tag,type,rating,voltage,...
